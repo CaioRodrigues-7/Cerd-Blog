@@ -1,0 +1,57 @@
+/* Estilos para o cartão */
+.center-card {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 60px;
+    padding: 20px;
+    background-color: #646464;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para o formulário */
+  .post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; 
+  }
+  .full-width {
+    width: 100%;
+  }
+  
+  /* Estilos para o campo de tags */
+  .tags-chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  mat-chip {
+    background-color: #f1f1f1;
+  }
+  
+  mat-chip .mat-chip-remove {
+    margin-left: 5px;
+  }
+  
+  /* Estilo do botão de criação */
+  .form-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .create-button {
+    width: 100%; /* Faz o botão ocupar toda a largura disponível */
+    max-width: 300px; /* Limita a largura máxima do botão */
+    padding: 12px 24px; /* Aumenta o padding para tornar o botão mais largo e mais alto */
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+    background-color: #6200ea; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border-radius: 8px; /* Cantos arredondados */
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave na cor do fundo */
+  }
+
+
+.create-button:hover {
+    background-color: #3700b3; /* Cor de fundo ao passar o mouse */
+  }
+  

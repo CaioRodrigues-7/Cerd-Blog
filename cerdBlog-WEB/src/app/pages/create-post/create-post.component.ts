@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -9,6 +9,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-post',
@@ -16,11 +19,13 @@ import {FormsModule} from '@angular/forms';
   imports: [
     MatCardModule,
     MatFormFieldModule,
+    MatButtonModule,
     ReactiveFormsModule,
     MatChipsModule,
     MatIconModule,
     FormsModule, 
-    MatInputModule
+    MatInputModule,
+    CommonModule
   ],
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.scss']
@@ -29,14 +34,14 @@ import {FormsModule} from '@angular/forms';
 export class CreatePostComponent {
   
   postForm!: FormGroup;
-  tags:string[] = [];
+  tags: string[] = [];
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private cdRef: ChangeDetectorRef
   ){}
-
 
   ngOnInit() {
     this.postForm = this.fb.group({
@@ -48,17 +53,15 @@ export class CreatePostComponent {
     }
 
     add(event: any) {
-      const value = event.value.trim();
-      if (value) {
-        this.tags.push(value);
+      const value = event.target.value.trim();
+      if (value && !this.tags.includes(value)) {
+        this.tags.push((value));
+        event.target.value = '';
       }
-      event.chipInput!.clear();
     }
     
     remove(tag: any) {
       const index = this.tags.indexOf(tag);
-      if (index >= 0) {
         this.tags.splice(index, 1);
-      }
     }
 }

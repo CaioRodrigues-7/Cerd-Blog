@@ -1,52 +1,27 @@
-<mat-card class="center-card">
-    <mat-card-content>
-      <form [formGroup]="postForm" class="post-form">
+<body>
+  <form [formGroup]="postForm" class="post-form">
+    <input id="name" type="text" placeholder="Name*" style="text-align: center;" formControlName="name" class="cutom-input"/>
+    
+    <input id="image" type="text" placeholder="Image*" style="text-align: center;" formControlName="img" class="cutom-input"/>
+
+    <textarea id="content" rows="5" placeholder="Content*" style="text-align: center;" formControlName="content" class="cutom-input"></textarea>
+
+    <input id="postedBy" type="text" placeholder="posted By*" style="text-align: center;" formControlName="postedBy" class="cutom-input"/>
         
-        <div>
+    <div class="tags-container">
+      <button *ngFor="let tag of tags; let i = index" class="tag-button" (click)="remove(i)">
+        {{ tag }}
+        <mat-icon class="remove-icon">cancel</mat-icon>
+      </button>
+    </div>
 
-            <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name">
-            </mat-form-field>
+    <input id="tag-input"
+          type="text"
+          placeholder="Add a tag..."
+          (keyup.enter)="add($event)" />
 
-            <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Image</mat-label>
-            <input matInput formControlName="img">
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Content</mat-label>
-            <textarea matInput rows="5" formControlName="content" formControlName="content"></textarea>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Posted by</mat-label>
-            <input matInput formControlName="postedBy">
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Tags</mat-label>
-            <mat-chip-grid #chipGrid aria-label="Enter tags" class="tags-chip-grid">
-                <mat-chip-row *ngFor="let tag of tags; let i = index" (removed)="remove(tag)">
-                {{tag}}
-                <button matChipRemove>
-                    <mat-icon>cancel</mat-icon>
-                </button>
-                </mat-chip-row>
-                <input placeholder="New Tag..."
-                    [matChipInputFor]="chipGrid"
-                    (matChipInputTokenEnd)="add($event)" />
-            </mat-chip-grid>
-            </mat-form-field>
-  </div>
-
-        <div class="form-footer">
-          <button mat-raised-button color="primary" class="create-button" [disabled]="!postForm.valid">
-            Create new post
-          </button>
-        </div>
-        
-      </form>
-    </mat-card-content>
-  </mat-card>
-  
+    <div class="form-footer">
+      <button class="custom-button">Create new post</button>
+    </div>
+  </form>
+</body>

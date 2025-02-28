@@ -1,0 +1,50 @@
+.master-div {
+    background-color: black;
+    color: aliceblue;
+    padding: 4px;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .tool-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  #name-owner {
+    font-weight: bold;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .align-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .custom-button {
+    width: 100%;
+    max-width: 200px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    cursor: pointer;
+  }
+  
+  .custom-button:hover {
+    background-color: #434244;
+  }
+  
+  .custom-button:active {
+    transform: scale(0.98);
+  }
+  

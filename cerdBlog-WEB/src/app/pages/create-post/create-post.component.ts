@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { PostService } from '../../service/post.service';
 
 @Component({
   selector: 'app-create-post',
@@ -33,35 +34,49 @@ import { CommonModule } from '@angular/common';
 
 export class CreatePostComponent {
   
-  postForm!: FormGroup;
-  tags: string[] = [];
+    postForm!: FormGroup;
+    tags: string[] = [];
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private snackBar: MatSnackBar,
-    private cdRef: ChangeDetectorRef
-  ){}
+    constructor(
+      private fb: FormBuilder,
+      private router: Router,
+      private snackBar: MatSnackBar,
+      private cdRef: ChangeDetectorRef,
+      private postService: PostService,
+    ){}
 
-  ngOnInit() {
-    this.postForm = this.fb.group({
-      name: [null, Validators.required],
-      content: [null, [Validators.required, Validators.maxLength(5000)]],
-      img: [null, Validators.required],
-      postedBy: [null, Validators.required],
-    });
-    }
-
-    add(event: any) {
-      const value = event.target.value.trim();
-      if (value && !this.tags.includes(value)) {
-        this.tags.push((value));
-        event.target.value = '';
+    ngOnInit() {
+      this.postForm = this.fb.group({
+        name: [null, Validators.required],
+        content: [null, [Validators.required, Validators.maxLength(5000)]],
+        img: [null, Validators.required],
+        postedBy: [null, Validators.required],
+      });
       }
-    }
-    
-    remove(tag: any) {
-      const index = this.tags.indexOf(tag);
-        this.tags.splice(index, 1);
-    }
+
+      add(event: any) {
+        const value = event.target.value.trim();
+        if (value && !this.tags.includes(value)) {
+          this.tags.push((value));
+          event.target.value = '';
+
+          this.cdRef.detectChanges();
+        }
+      }
+      
+      remove(index: any) {
+          this.tags.splice(index, 1);
+      }
+
+      createPost(){
+        const data = this.postForm.value;
+        data.tags = this.tags;
+
+        this.postService.createNewPost(data).subscribe(res =>{
+          this.snackBar.open("Post created successfully !!!", "OK");
+          this.router.navigateByUrl("/");
+      }, error=>{   
+          this.snackBar.open("Something went wrong!!!", "OK");
+    })
+  }
 }

@@ -1,10 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../service/post.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-view-all',
-  imports: [],
+  imports: [
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    CommonModule,
+    MatGridListModule
+  ],
   templateUrl: './view-all.component.html',
   styleUrl: './view-all.component.scss'
 })
@@ -21,6 +32,7 @@ export class ViewAllComponent implements OnInit{
     getAllPosts(){
       this.postService.getAllPosts().subscribe(res =>{
         console.log(res);
+        this.allPosts = res;
         this.allPosts = res;
       }, error =>{
         this.snackBar.open("Something went wrong!!!", "OK")

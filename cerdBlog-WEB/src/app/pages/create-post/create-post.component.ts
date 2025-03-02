@@ -63,7 +63,7 @@ export class CreatePostComponent {
       this.cdRef.detectChanges();
     }
   }
-    
+
     remove(index: any) {
       this.tags.splice(index, 1);
   }

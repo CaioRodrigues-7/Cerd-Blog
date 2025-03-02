@@ -24,10 +24,10 @@ import { CommonModule } from '@angular/common';
         
       <div class="align-button">
         <button class="custom-button" routerLink="/create-post">Create new post</button>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" routerLink="/view-all">
           <mat-icon>favorite</mat-icon>
         </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/view-all">
           <mat-icon>share</mat-icon>
         </button>
       </div>

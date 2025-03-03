@@ -1,5 +1,6 @@
 package org.cerdBlog.blogServer.controller;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.cerdBlog.blogServer.entity.Post;
 import org.cerdBlog.blogServer.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/posts")
@@ -35,6 +38,16 @@ public class PostController {
             return ResponseEntity.status(HttpStatus.OK).body(postService.getAllPosts());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/{postId}")
+    public ResponseEntity<?> getPostById(@PathVariable Long postId){
+        try{
+            Post post = postService.getPostById(postId);
+            return ResponseEntity.ok(post);
+        }catch (EntityNotFoundException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 }

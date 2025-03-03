@@ -4,35 +4,41 @@
 
     <!-- Contêiner dos cards -->
     <div class="card-container">
-        <div class="card" *ngFor="let item of allPosts">
+        <div class="card" *ngIf="postData">
             <div class="card-header">
                 <div class="avatar"></div>
-                <div class="card-title">{{ item.name }}</div>
+                <div class="card-title">{{ postData.name }}</div>
                 <div class="card-subtitle">
-                    Posted by: {{item.postedBy}} | Posted On: {{ item.date | date:'medium' }}
+                    Posted by: {{postData.postedBy}} | Posted On: {{ postData.date | date: 'medium'}}
                 </div>
             </div>
             
             <div class="grid-container">
                 <div class="grid-image">
-                    <img [src]="item.img" class="post-img" alt="Card Image" />
+                    <img [src]="postData.img" class="post-img" alt="Card Image" />
                 </div>
                 <div class="grid-content">
-                    {{ item.content && item.content.length > 600 ? item.content.slice(0, 600) + '....' : item.content }}
+                    {{ postData.content}}
                 </div>
             </div>
             
             <hr>
+
+            <div *ngFor="let tag of postData.tags">
+                <button>
+                    {{ tag }}
+                </button>
+            </div>
             <div class="card-actions">
                 <button class="action-button">
-                    {{ item.likeCount }}
+                    {{ postData.likeCount }}
                     <span class="material-icons">favorite</span>
                 </button>
                 <button class="action-button" style="margin-left: 5px;">
-                    {{ item.viewCount }}
+                    {{ postData.viewCount }}
                     <span class="material-icons">remove_red_eye</span>
                 </button>
-                <button class="action-button" style="margin-left: 5px;" routerLink="/view-post/{{item.id}}">View Post</button>
+                <button class="action-button" style="margin-left: 5px;" routerLink="/view-post/{{postData.id}}">View Post</button>
             </div>
         </div>
     </div>

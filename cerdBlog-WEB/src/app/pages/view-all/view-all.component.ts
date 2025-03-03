@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-view-all',
@@ -13,6 +14,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    RouterModule,
     CommonModule,
     MatGridListModule
   ],

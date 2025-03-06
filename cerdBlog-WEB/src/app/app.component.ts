@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { NgClass } from '@angular/common';
+import { BackgroundComponent } from './components/background/background.component';
 
 @Component({
   selector: 'app-root',
   imports: 
   [
     RouterOutlet,
+    BackgroundComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

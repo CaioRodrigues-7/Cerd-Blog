@@ -13,6 +13,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { PostService } from '../../service/post.service';
+import { BackgroundComponent } from "../../components/background/background.component";
 
 @Component({
   selector: 'app-create-post',
@@ -24,10 +25,11 @@ import { PostService } from '../../service/post.service';
     ReactiveFormsModule,
     MatChipsModule,
     MatIconModule,
-    FormsModule, 
+    FormsModule,
     MatInputModule,
-    CommonModule
-  ],
+    CommonModule,
+    BackgroundComponent
+],
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.scss']
 })

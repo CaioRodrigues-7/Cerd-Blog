@@ -1,6 +1,6 @@
 .master-div {
-    background-color: black;
-    color: aliceblue;
+    background-color: rgba(41, 40, 40, 0.932);
+    color: rgb(255, 255, 255);
     padding: 4px;
   
     display: flex;
@@ -33,9 +33,9 @@
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     border: none;
-    padding: 5px;
-    border-radius: 20px;
-    font-size: 16px;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 14px;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.1s ease;
     cursor: pointer;

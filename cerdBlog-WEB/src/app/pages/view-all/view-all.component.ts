@@ -7,7 +7,6 @@ import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
-import { BackgroundComponent } from "../../components/background/background.component";
 
 @Component({
   selector: 'app-view-all',
@@ -17,8 +16,7 @@ import { BackgroundComponent } from "../../components/background/background.comp
     MatCardModule,
     RouterModule,
     CommonModule,
-    MatGridListModule,
-    BackgroundComponent
+    MatGridListModule
 ],
   templateUrl: './view-all.component.html',
   styleUrl: './view-all.component.scss'

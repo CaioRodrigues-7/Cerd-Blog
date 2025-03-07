@@ -1,5 +1,5 @@
 .body-id {
-    background-image: url('https://cdna.artstation.com/p/assets/images/images/047/160/908/original/pxsprite-space.gif?1646911392');
+    background-image:url(resources/blogBackground.gif);
     position: fixed;
     top: 0;
     left: 0;
@@ -7,7 +7,7 @@
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: -1;
+    z-index: 0;
 }
 
 .background-blur {

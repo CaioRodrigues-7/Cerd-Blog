@@ -1,12 +1,9 @@
-package org.cerdBlog.blogServer.entity;
+package org.cerdBlog.blogServer.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import lombok.Data;
 
-@Entity
-public class Login {
-
-    @Id
+@Data
+public class LoginDTO {
     private String userEmail;
     private String userPassword;
 
